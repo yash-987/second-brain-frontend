@@ -10,11 +10,11 @@ import type { Content } from '../utils';
 import { YoutubeIcon } from '../components/icons/YoutubeIcon';
 import { TwitterIcon } from '../components/icons/TwitterIcon';
 import axios from 'axios';
-import { BACKEND_URL } from '../config';
+
 import { useRecoilValue } from 'recoil';
 import { UserAtom } from '../store/user';
 import { toast } from 'react-toastify';
-
+const BACKEND_URL = import.meta.env.BACKEND_URl;
 export function Dashboard() {
 	const [isOpen, setIsOpen] = useState(false);
 	const content: Content[] = useContent();
@@ -60,7 +60,7 @@ export function Dashboard() {
 						onClick={shareBrain}
 						startIcon={<ShareIcon size="md" />}
 						size="md"
-						text="Share brain"
+						text={share ? 'Sharing..' : 'Share brain'}
 						variant="secondary"
 					/>
 				</div>

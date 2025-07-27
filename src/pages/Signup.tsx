@@ -3,11 +3,11 @@ import { Button } from '../components/ui/Button';
 import { InputBox } from '../components/ui/InputBox';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { BACKEND_URL } from '../config';
+
 import { useSetRecoilState } from 'recoil';
 import { UserAtom } from '../store/user';
 import { useNavigate } from 'react-router-dom';
-
+const BACKEND_URL = import.meta.env.BACKEND_URl;
 export function Signup() {
 	const [loading, setLoading] = useState(false);
 

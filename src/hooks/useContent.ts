@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
-import { BACKEND_URL } from '../config';
 import { UserAtom } from '../store/user';
 import { toast } from 'react-toastify';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { ContentAtom, ContentRefreshAtom } from '../store/content';
-
+const BACKEND_URL = import.meta.env.BACKEND_URl;
 export function useContent() {
 	const [content, setContent] = useRecoilState(ContentAtom);
 	const user = useRecoilValue(UserAtom);

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { CrossIcon } from '../icons/CrossIcon';
 import { InputBox } from './InputBox';
 import { Button } from './Button';
@@ -6,20 +6,19 @@ import { toast } from 'react-toastify';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { UserAtom } from '../../store/user';
 
-import { BACKEND_URL } from '../../config';
 import axios from 'axios';
 import type { User } from '../../utils/index';
 import { ContentAtom, ContentRefreshAtom } from '../../store/content';
-
+const BACKEND_URL = import.meta.env.BACKEND_URl;
 interface CreateContentProps {
 	open: boolean;
 	onClose: () => void;
 }
 
-enum ContentTypes {
-	Twitter = 'twitter',
-	Youtube = 'youtube',
-}
+const ContentTypes = {
+	Twitter: 'twitter',
+	Youtube: 'youtube',
+} as const;
 
 function CreateContent({ open, onClose }: CreateContentProps) {
 	const titleRef = useRef<HTMLInputElement>(null);
@@ -27,7 +26,7 @@ function CreateContent({ open, onClose }: CreateContentProps) {
 	const [loading, setLoading] = useState(false);
 	const setContent = useSetRecoilState(ContentAtom);
 	const user: User = useRecoilValue(UserAtom);
-	const [type, setType] = useState(ContentTypes.Youtube);
+	const [type, setType] = useState<keyof typeof ContentTypes>('Youtube');
 	const setRefresh = useSetRecoilState(ContentRefreshAtom);
 	async function addContent() {
 		const title = titleRef.current?.value;
@@ -41,7 +40,6 @@ function CreateContent({ open, onClose }: CreateContentProps) {
 		setLoading(true);
 
 		try {
-			
 			const config = {
 				headers: {
 					'Content-type': 'application/json',
@@ -54,7 +52,7 @@ function CreateContent({ open, onClose }: CreateContentProps) {
 				{
 					title,
 					link,
-					type,
+					type: ContentTypes[type],
 				},
 				config
 			);
@@ -89,18 +87,14 @@ function CreateContent({ open, onClose }: CreateContentProps) {
 							<span className="text-lg font-semibold">Type</span>
 							<div className="flex gap-2 my-2">
 								<Button
-									variant={
-										type === ContentTypes.Youtube ? 'primary' : 'secondary'
-									}
-									onClick={() => setType(ContentTypes.Youtube)}
+									variant={type === 'Youtube' ? 'primary' : 'secondary'}
+									onClick={() => setType('Youtube')}
 									size="lg"
 									text="Youtube"
 								/>
 								<Button
-									variant={
-										type === ContentTypes.Twitter ? 'primary' : 'secondary'
-									}
-									onClick={() => setType(ContentTypes.Twitter)}
+									variant={type === 'Twitter' ? 'primary' : 'secondary'}
+									onClick={() => setType('Twitter')}
 									size="lg"
 									text="Twitter"
 								/>
@@ -110,7 +104,7 @@ function CreateContent({ open, onClose }: CreateContentProps) {
 									onClick={addContent}
 									size="lg"
 									variant="primary"
-									text="Submit"
+									text={loading ? 'Creating Content...' : 'Submit'}
 								/>
 							</div>
 						</span>

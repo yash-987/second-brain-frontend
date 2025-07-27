@@ -5,10 +5,9 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { ContentAtom } from '../../store/content';
 import { UserAtom } from '../../store/user';
 import axios from 'axios';
-import { BACKEND_URL } from '../../config';
-import type { Content } from '../../utils';
-import { toast } from 'react-toastify';
 
+import { toast } from 'react-toastify';
+const BACKEND_URL = import.meta.env.BACKEND_URl;
 interface CardProps {
 	title: string;
 	id: string;

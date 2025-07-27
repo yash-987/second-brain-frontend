@@ -5,9 +5,9 @@ import { toast } from 'react-toastify';
 import { useSetRecoilState } from 'recoil';
 import { UserAtom } from '../store/user';
 import { useNavigate } from 'react-router-dom';
-import { BACKEND_URL } from '../config';
-import axios from 'axios';
 
+import axios from 'axios';
+const BACKEND_URL = import.meta.env.BACKEND_URl;
 export function Signin() {
 	const [loading, setLoading] = useState(false);
 
