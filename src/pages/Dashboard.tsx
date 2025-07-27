@@ -14,8 +14,7 @@ import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { UserAtom } from '../store/user';
 import { toast } from 'react-toastify';
-// Using relative URL with Vite proxy
-const BACKEND_URL = 'https://brainly-olive.vercel.app';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export function Dashboard() {
 	const [isOpen, setIsOpen] = useState(false);
 	const content: Content[] = useContent();

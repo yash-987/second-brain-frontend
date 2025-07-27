@@ -7,8 +7,8 @@ import { UserAtom } from '../store/user';
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-// Using relative URL with Vite proxy
-const BACKEND_URL = 'https://brainly-olive.vercel.app';
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export function Signin() {
 	const [loading, setLoading] = useState(false);
 

@@ -7,8 +7,7 @@ import { UserAtom } from '../../store/user';
 import axios from 'axios';
 
 import { toast } from 'react-toastify';
-// Using relative URL with Vite proxy
-const BACKEND_URL = 'https://brainly-olive.vercel.app';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 interface CardProps {
 	title: string;
 	id: string;
