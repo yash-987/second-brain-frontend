@@ -9,7 +9,8 @@ import { UserAtom } from '../../store/user';
 import axios from 'axios';
 import type { User } from '../../utils/index';
 import { ContentAtom, ContentRefreshAtom } from '../../store/content';
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+// Using relative URL with Vite proxy
+const BACKEND_URL = 'https://brainly-olive.vercel.app';
 interface CreateContentProps {
 	open: boolean;
 	onClose: () => void;
