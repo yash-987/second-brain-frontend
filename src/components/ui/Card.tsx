@@ -7,7 +7,7 @@ import { UserAtom } from '../../store/user';
 import axios from 'axios';
 
 import { toast } from 'react-toastify';
-const BACKEND_URL = import.meta.env.BACKEND_URl;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 interface CardProps {
 	title: string;
 	id: string;

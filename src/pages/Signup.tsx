@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useSetRecoilState } from 'recoil';
 import { UserAtom } from '../store/user';
 import { useNavigate } from 'react-router-dom';
-const BACKEND_URL = import.meta.env.BACKEND_URl;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export function Signup() {
 	const [loading, setLoading] = useState(false);
 

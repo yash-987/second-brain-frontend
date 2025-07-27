@@ -4,7 +4,7 @@ import { UserAtom } from '../store/user';
 import { toast } from 'react-toastify';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { ContentAtom, ContentRefreshAtom } from '../store/content';
-const BACKEND_URL = import.meta.env.BACKEND_URl;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export function useContent() {
 	const [content, setContent] = useRecoilState(ContentAtom);
 	const user = useRecoilValue(UserAtom);

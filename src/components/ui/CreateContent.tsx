@@ -9,7 +9,7 @@ import { UserAtom } from '../../store/user';
 import axios from 'axios';
 import type { User } from '../../utils/index';
 import { ContentAtom, ContentRefreshAtom } from '../../store/content';
-const BACKEND_URL = import.meta.env.BACKEND_URl;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 interface CreateContentProps {
 	open: boolean;
 	onClose: () => void;

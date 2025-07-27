@@ -14,7 +14,7 @@ import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { UserAtom } from '../store/user';
 import { toast } from 'react-toastify';
-const BACKEND_URL = import.meta.env.BACKEND_URl;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export function Dashboard() {
 	const [isOpen, setIsOpen] = useState(false);
 	const content: Content[] = useContent();
